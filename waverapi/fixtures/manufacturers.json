@@ -1,0 +1,31 @@
+[
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 1,
+        "fields": {
+            "name": "Arturia"
+        }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 2,
+        "fields": {
+            "name": "Sequential Circuits"
+        }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 3,
+        "fields": {
+            "name": "Moog"
+        }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 1,
+        "fields": {
+            "name": "Oberheim"
+        }
+    }
+
+]
