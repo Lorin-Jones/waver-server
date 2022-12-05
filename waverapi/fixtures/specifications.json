@@ -1,0 +1,45 @@
+[
+    {
+        "model": "waverapi.specification",
+        "pk": 1,
+        "fields": {
+            "description": "6-Voice"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 2,
+        "fields": {
+            "description": "1-Voice"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 3,
+        "fields": {
+            "description": "2-Voice"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 4,
+        "fields": {
+            "description": "Arpeggiator"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 5,
+        "fields": {
+            "description": "Sequencer"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 6,
+        "fields": {
+            "description": "Digital Effects"
+        }
+    }
+
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "model": "waverapi.gear_type",
+        "pk": 1,
+        "fields": {
+            "name": "Polyphonic Synthesizer"
+        }
+    },
+    {
+        "model": "waverapi.gear_type",
+        "pk": 2,
+        "fields": {
+            "name": "Monophonic Synthesizer"
+        }
+    },
+    {
+        "model": "waverapi.gear_type",
+        "pk": 3,
+        "fields": {
+            "name": "Duophonic Synthesizer"
+        }
+    },
+    {
+        "model": "waverapi.gear_type",
+        "pk": 4,
+        "fields": {
+            "name": "Effect Pedal"
+        }
+    }
+    
+    
+]
