@@ -4,10 +4,28 @@
         "pk": 1,
         "fields": {
             "name": "Polybrute",
-            "image": "",
+            "image": "https://asset.cloudinary.com/dlr2tm7qr/62ee0082bd668414baf0bc69509ce0b1",
             "price": 2599.00,
             "description": "A 6-voice analog powerhouse, with unprecedented expressivity and sound morphing capabilities, built to let you perform fearlessly, compose with fluidity, and explore sound in perpetual motion.",
-            
+            "specifications": "6-Voice Polyphony, 61-Note Velocity and Aftertouch Keyboard, Morphee Touch and Pressure Control, Advanced Sequencer / Arpeggiator",
+            "release_date": 2021,
+            "manufacturer_id": 1,
+            "geartype_id": 1
+        }
+        
+    },
+    {
+        "model": "waverapi.gear",
+        "pk": 2,
+        "fields": {
+            "name": "Prophet 6",
+            "image": "https://asset.cloudinary.com/dlr2tm7qr/0a1fd65b8ff894807215ae0330508078",
+            "price": 2299.00,
+            "description": "The Sequential Prophet-6 is Dave Smith's tribute to his groundbreaking analog polysynth, the Prophet-5. Driving this 6-voice beast are two discrete VCOs plus a sub oscillator per voice. Other features are two discrete filters per voice, a studio-grade, digital dual effects section, analog stereo distortion, onboard arpeggiator and step sequencer, a knob-per-function top panel, and a full-size, 4-octave, semi-weighted keyboard with velocity and aftertouch.",
+            "specifications": ,
+            "release_date": 2021,
+            "manufacturer_id": 1,
+            "geartype_id": 1
         }
         
     }
