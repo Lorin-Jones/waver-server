@@ -1,0 +1,14 @@
+[
+    {
+        "model": "waverapi.gear",
+        "pk": 1,
+        "fields": {
+            "name": "Polybrute",
+            "image": "",
+            "price": 2599.00,
+            "description": "A 6-voice analog powerhouse, with unprecedented expressivity and sound morphing capabilities, built to let you perform fearlessly, compose with fluidity, and explore sound in perpetual motion.",
+            
+        }
+        
+    }
+]
