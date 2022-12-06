@@ -1,0 +1,11 @@
+[
+    {
+        "model": "waverapi.comment",
+        "pk": 1,
+        "fields": {
+            "author": 2,
+            "post": 1,
+            "content": "The Prophet-6 is cheaper, and it does have a more impressive tone up front, but the modulation matrix on the Polybrute makes for endless possibilities. I would get the Prophet if I were looking to gig and/or save money. The Poly has a steep learning curve, but you'll be able to experiment endlessly!"
+        }
+    }
+]

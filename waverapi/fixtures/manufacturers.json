@@ -22,7 +22,7 @@
     },
     {
         "model": "waverapi.manufacturer",
-        "pk": 1,
+        "pk": 4,
         "fields": {
             "name": "Oberheim"
         }

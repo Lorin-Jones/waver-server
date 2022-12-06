@@ -1,0 +1,13 @@
+[
+    {
+        "model": "waverapi.post",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "title": "Which is better, the Polybrute or the Prophet-6?",
+            "publication_date": "2022-12-06",
+            "content": "I'm looking to purchase a flagship synth, and I'm not certain where to put my money. I'm interested in the sound design aspects of the Polybrute, but I've heard that the Prophet has a richer, more immediate sound."
+
+        }
+    }
+]

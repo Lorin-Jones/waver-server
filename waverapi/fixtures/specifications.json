@@ -40,6 +40,34 @@
         "fields": {
             "description": "Digital Effects"
         }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 7,
+        "fields": {
+            "description": "8-Voice"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 8,
+        "fields": {
+            "description": "61 Keys"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 9,
+        "fields": {
+            "description": "4-Voice"
+        }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 10,
+        "fields": {
+            "description": "25 Keys"
+        }
     }
 
 ]
