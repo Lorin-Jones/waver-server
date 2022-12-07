@@ -44,4 +44,4 @@ class WaverUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WaverUser
-        fields = ( 'id', 'user', 'bio', 'profile_img_url', )
+        fields = ( 'id', 'user', 'bio', )

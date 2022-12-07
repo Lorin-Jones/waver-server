@@ -53,7 +53,7 @@ def register_user(request):
         first_name=request.data['first_name'],
         last_name=request.data['last_name'],
         email=request.data['email'],
-        is_staff=False
+        is_staff=True
     )
 
     rare_user = WaverUser.objects.create(

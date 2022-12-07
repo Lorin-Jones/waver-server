@@ -18,10 +18,12 @@ from django.conf.urls import include
 from django.urls import path
 from waverapi.views import register_user, login_user
 from rest_framework import routers
+from waverapi.views.waver_user_view import WaverUserView
+from waverapi.views.gear_view import GearView
 
 router = routers.DefaultRouter(trailing_slash=False)
-# router.register(r'customers', CustomerView, 'customer')
-# router.register(r'employees', EmployeeView, 'employee')
+router.register(r'waver_users', WaverUserView, 'waver_user')
+router.register(r'gear', GearView, 'gear')
 # router.register(r'tickets', TicketView, 'serviceTicket')
 
 urlpatterns = [
