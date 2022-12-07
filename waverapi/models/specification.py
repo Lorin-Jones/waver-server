@@ -1,5 +1,5 @@
 from django.db import models
 
-class Specifications(models.Model):
+class Specification(models.Model):
 
     description = models.CharField(max_length=100)

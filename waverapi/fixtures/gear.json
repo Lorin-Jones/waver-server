@@ -7,10 +7,9 @@
             "image": "https://asset.cloudinary.com/dlr2tm7qr/62ee0082bd668414baf0bc69509ce0b1",
             "price": 2599.00,
             "description": "A 6-voice analog powerhouse, with unprecedented expressivity and sound morphing capabilities, built to let you perform fearlessly, compose with fluidity, and explore sound in perpetual motion.",
-            "specifications": [1,2,4],
             "release_date": 2021,
-            "manufacturer_id": 1,
-            "geartype_id": 1
+            "manufacturer": 1,
+            "gear_type": 1
         }
         
     },
@@ -22,40 +21,37 @@
             "image": "https://asset.cloudinary.com/dlr2tm7qr/0a1fd65b8ff894807215ae0330508078",
             "price": 2299.00,
             "description": "The Sequential Prophet-6 is Dave Smith's tribute to his groundbreaking analog polysynth, the Prophet-5. Driving this 6-voice beast are two discrete VCOs plus a sub oscillator per voice. Other features are two discrete filters per voice, a studio-grade, digital dual effects section, analog stereo distortion, onboard arpeggiator and step sequencer, a knob-per-function top panel, and a full-size, 4-octave, semi-weighted keyboard with velocity and aftertouch.",
-            "specifications": [1,3,5],
             "release_date": 2015,
-            "manufacturer_id": 2,
-            "geartype_id": 1
+            "manufacturer": 2,
+            "gear_type": 1
         }
         
     },
     {
-        "model": "waverapi.waver_gear",
+        "model": "waverapi.gear",
         "pk": 3,
         "fields": {
             "name": "OB-X8",
             "image": "https://asset.cloudinary.com/dlr2tm7qr/7d1a75fc7934f046092987f7b5cf88f9",
             "price": 4999.00,
             "description": "The name Oberheim is practically synonymous with audio synthesizers, with founder Tom Oberheim considered one of the most influential figures in the history of the music industry. Nearly four decades since the last official Oberheim instrument, the juggernaut manufacturer reemerges with Oberheim himself steering the ship. Celebrating Oberheim's triumphant return is the OB-X8 polyphonic analog synthesizer, paying homage to the illustrious OB series by faithfully re-creating three of its models within a single synthesizer.",
-            "specifications": [4,7,8],
             "release_date": 2022,
-            "manufacturer_id": 4,
-            "geartype_id": 1
+            "manufacturer": 4,
+            "gear_type": 1
         }
         
     },
     {
-        "model": "waverapi.waver_gear",
+        "model": "waverapi.gear",
         "pk": 4,
         "fields": {
             "name": "Microfreak",
             "image": "https://asset.cloudinary.com/dlr2tm7qr/06acd0a81f87a851bb81e076f974674a",
             "price": 299.00,
             "description": "Arturia’s MicroFreak synth is an affordable hybrid hardware synth with wavetable and digital oscillators, analog filters, a modulation matrix, an unconventional but highly expressive touch plate — and tons of sonic possibilities.",
-            "specifications": [4, 5, 10, 9],
             "release_date": 2019,
-            "manufacturer_id": 1,
-            "geartype_id": 1
+            "manufacturer": 1,
+            "gear_type": 1
         }
         
     }

@@ -1,0 +1,19 @@
+[
+    {
+        "model": "waverapi.usergear",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "gear": 1
+        }
+    },
+    {
+        "model": "waverapi.usergear",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "gear": 3
+        }
+    }
+
+]

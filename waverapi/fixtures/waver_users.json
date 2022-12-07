@@ -1,20 +1,20 @@
 [
     {
-        "model": "lightningapi.waver_user",
+        "model": "waverapi.waveruser",
         "pk": 1,
         "fields": {
             "user":1,
-            "bio": "I'm here to kick ass and chew bubble gum, and I'm all out of bubble gum.",
-            "profile_img_url": "https://asset.cloudinary.com/dlr2tm7qr/e3446cff8c9fbc4621eebad268581f51"
+            "bio": "I'm here to kick ass and chew bubble gum, and I'm all out of bubble gum."
+            
         }
     },
     {
-        "model": "lightningapi.waver_user",
+        "model": "waverapi.waveruser",
         "pk": 2,
         "fields": {
             "user":2,
-            "bio": "I'm an angel!",
-            "profile_img_url": ""
+            "bio": "I'm an angel!"
+            
         }
     }
 ]
