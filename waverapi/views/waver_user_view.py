@@ -32,6 +32,24 @@ class WaverUserView(ViewSet):
         serialized = WaverUserSerializer(user, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+    def update(self, request, pk):
+            """Handle PUT requests for a game
+
+            Returns:
+                Response -- Empty body with 204 status code
+            """
+            
+            user = User.objects.get(pk=pk)
+            user.username = request.data["username"]
+            user.first_name = request.data["first_name"]
+            user.last_name = request.data["last_name"]
+            user.email = request.data["last_name"]
+            user.is_staff = request.data["is_staff"]
+
+            user.save()
+
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
