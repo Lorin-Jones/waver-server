@@ -4,6 +4,7 @@ python3 manage.py migrate
 python3 manage.py makemigrations waverapi
 python3 manage.py migrate waverapi
 python3 manage.py loaddata users
+python3 manage.py loaddata tokens
 python3 manage.py loaddata waver_users
 python3 manage.py loaddata gear_types
 python3 manage.py loaddata manufacturers
