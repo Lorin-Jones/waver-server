@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from waverapi.models import Gear, GearType, Manufacturer
+from waverapi.models import Gear, GearType, Manufacturer, Specification
 
 class GearView(ViewSet):
 
@@ -24,6 +24,10 @@ class GearView(ViewSet):
             Response -- JSON serialized list of game types
         """
         gear = Gear.objects.all()
+
+        if "gear_type" in request.query_params:
+            gear = gear.filter(gear_type__id = request.query_params['gear_type'])
+
         serializer = GearSerializer(gear, many=True)
         return Response(serializer.data)   
 
@@ -79,9 +83,17 @@ class GearView(ViewSet):
         gear.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+class GearSpecificationsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Specification
+        fields = ('description',)
+
 class GearSerializer(serializers.ModelSerializer):
+
+    specifications = GearSpecificationsSerializer(many=True)
 
     class Meta: 
         model = Gear
-        fields = ('id', 'name', 'image', 'price', 'description', "release_date", "manufacturer", "gear_type", )
+        fields = ('id', 'name', 'image', 'price', 'description', "release_date", "manufacturer", "gear_type", "specifications" )
         depth = 2

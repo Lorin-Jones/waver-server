@@ -22,6 +22,9 @@ from waverapi.views.waver_user_view import WaverUserView
 from waverapi.views.gear_view import GearView
 from waverapi.views.gear_type_view import GearTypeView
 from waverapi.views.manufacturer_view import ManufacturerView
+from waverapi.views.specification_view import SpecificationView
+from waverapi.views.review_view import ReviewView
+
 
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -29,6 +32,10 @@ router.register(r'waver_users', WaverUserView, 'waver_user')
 router.register(r'gear', GearView, 'gear')
 router.register(r'gear_type', GearTypeView, 'gear_type')
 router.register(r'manufacturers', ManufacturerView, 'manufacturer')
+router.register(r'specifications', SpecificationView, 'specification')
+router.register(r'reviews', ReviewView, 'review')
+
+
 
 
 

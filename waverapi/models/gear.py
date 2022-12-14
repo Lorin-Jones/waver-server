@@ -9,3 +9,4 @@ class Gear(models.Model):
     release_date = models.IntegerField()
     manufacturer = models.ForeignKey("Manufacturer", on_delete=models.CASCADE, related_name='manufacturer')
     gear_type = models.ForeignKey('GearType', on_delete=models.CASCADE)
+    specifications = models.ManyToManyField('Specification', through='GearSpec')

@@ -26,6 +26,13 @@
         "fields": {
             "name": "Oberheim"
         }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 5,
+        "fields": {
+            "name": "Chase Bliss"
+        }
     }
 
 ]

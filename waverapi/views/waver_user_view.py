@@ -38,17 +38,32 @@ class WaverUserView(ViewSet):
             Returns:
                 Response -- Empty body with 204 status code
             """
-            
+            waver_user = WaverUser.objects.get(pk=pk)
             user = User.objects.get(pk=pk)
-            user.username = request.data["username"]
-            user.first_name = request.data["first_name"]
-            user.last_name = request.data["last_name"]
-            user.email = request.data["last_name"]
-            user.is_staff = request.data["is_staff"]
+            waver_user.bio = request.data['bio']
+            user.username = request.data['user']["username"]
+            user.first_name = request.data['user']["first_name"]
+            user.last_name = request.data['user']["last_name"]
+            user.email = request.data['user']["last_name"]
+            user.is_staff = request.data['user']["is_staff"]
 
+            waver_user.save()
             user.save()
 
             return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for waver_users
+
+        Returns:
+            Response: None with 204
+        """
+        waver_user = WaverUser.objects.get(pk=pk)
+        user = User.objects.get(pk=pk)
+        waver_user.delete()
+        user.delete()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -62,4 +77,4 @@ class WaverUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WaverUser
-        fields = ( 'id', 'user', 'bio', )
+        fields = ( 'id', 'user', 'bio', 'full_name')
