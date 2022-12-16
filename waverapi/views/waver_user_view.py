@@ -44,7 +44,7 @@ class WaverUserView(ViewSet):
             user.username = request.data['user']["username"]
             user.first_name = request.data['user']["first_name"]
             user.last_name = request.data['user']["last_name"]
-            user.email = request.data['user']["last_name"]
+            user.email = request.data['user']["email"]
             user.is_staff = request.data['user']["is_staff"]
 
             waver_user.save()
