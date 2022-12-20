@@ -3,71 +3,91 @@
         "model": "waverapi.specification",
         "pk": 1,
         "fields": {
-            "description": "6-Voice"
+            "release_date": 2021,
+            "manufacturer": 1,
+            "gear_types": 1,
+            "number_of_keys": "61-Key",
+            "voices": "6-Voices",
+            "arpeggiator": true,
+            "sequencer": true, 
+            "velocity": true, 
+            "aftertouch": true 
         }
     },
     {
         "model": "waverapi.specification",
         "pk": 2,
         "fields": {
-            "description": "1-Voice"
+            "release_date": 2015,
+            "manufacturer": 2,
+            "gear_types": 1,
+            "number_of_keys": "61-Key",
+            "voices": "6-Voices",
+            "arpeggiator": true,
+            "sequencer": true, 
+            "velocity": true, 
+            "aftertouch": true 
         }
     },
     {
         "model": "waverapi.specification",
         "pk": 3,
         "fields": {
-            "description": "2-Voice"
+            "release_date": 2022,
+            "manufacturer": 4,
+            "gear_types": 1,
+            "number_of_keys": "61-Key",
+            "voices": "8-Voices",
+            "arpeggiator": true,
+            "sequencer": true, 
+            "velocity": true, 
+            "aftertouch": true 
         }
     },
     {
         "model": "waverapi.specification",
         "pk": 4,
         "fields": {
-            "description": "Arpeggiator"
+            "release_date": 2019,
+            "manufacturer": 1,
+            "gear_types": 1,
+            "number_of_keys": "25-Key",
+            "voices": "4-Voices",
+            "arpeggiator": true,
+            "sequencer": true, 
+            "velocity": true, 
+            "aftertouch": true 
         }
     },
     {
         "model": "waverapi.specification",
         "pk": 5,
         "fields": {
-            "description": "Sequencer"
+            "release_date": 2022,
+            "manufacturer": 5,
+            "gear_types": 4,
+            "number_of_keys": "",
+            "voices": "",
+            "arpeggiator": null,
+            "sequencer": null, 
+            "velocity": null, 
+            "aftertouch": null 
         }
     },
     {
         "model": "waverapi.specification",
         "pk": 6,
         "fields": {
-            "description": "Digital Effects"
-        }
-    },
-    {
-        "model": "waverapi.specification",
-        "pk": 7,
-        "fields": {
-            "description": "8-Voice"
-        }
-    },
-    {
-        "model": "waverapi.specification",
-        "pk": 8,
-        "fields": {
-            "description": "61 Keys"
-        }
-    },
-    {
-        "model": "waverapi.specification",
-        "pk": 9,
-        "fields": {
-            "description": "4-Voice"
-        }
-    },
-    {
-        "model": "waverapi.specification",
-        "pk": 10,
-        "fields": {
-            "description": "25 Keys"
+            "release_date": 2020,
+            "manufacturer": 5,
+            "gear_types": 4,
+            "number_of_keys": "",
+            "voices": "",
+            "arpeggiator": null,
+            "sequencer": null, 
+            "velocity": null, 
+            "aftertouch": null 
         }
     }
-
+    
 ]

@@ -66,13 +66,13 @@ class GearView(ViewSet):
         gear.image = request.data["image"]
         gear.price = request.data["price"]
         gear.description = request.data["description"]
-        gear.release_date = request.data["release_date"]
+        gear.release_date = request.data["releaseDate"]
 
 
 
-        manufacturer = Manufacturer.objects.get(pk=request.data["manufacturer"])
+        manufacturer = Manufacturer.objects.get(pk=request.data["manufacturerId"])
         gear.manufacturer = manufacturer
-        gear_type = GearType.objects.get(pk=request.data["gear_type"])
+        gear_type = GearType.objects.get(pk=request.data["gearTypeId"])
         gear.gear_type = gear_type
         gear.save()
 

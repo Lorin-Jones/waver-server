@@ -13,6 +13,6 @@ python3 manage.py loaddata gear
 python3 manage.py loaddata reviews
 python3 manage.py loaddata posts
 python3 manage.py loaddata comments
-python3 manage.py loaddata gear_specs
+python3 manage.py loaddata gear_review
 python3 manage.py loaddata user_gear
 
