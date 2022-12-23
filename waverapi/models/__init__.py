@@ -8,4 +8,3 @@ from .post import Post
 from .comment import Comment
 from .review import Review
 from .user_gear import UserGear
-from .review import Review

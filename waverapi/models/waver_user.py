@@ -5,7 +5,7 @@ class WaverUser(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user")
     bio = models.CharField(max_length=50)
-    
+    gear = models.ManyToManyField('Gear', through="UserGear")
 
     @property
     def full_name(self):

@@ -7,4 +7,4 @@ class Gear(models.Model):
     price = models.IntegerField()
     description = models.CharField(max_length=1000)
     specifications = models.ForeignKey('Specification', on_delete=models.CASCADE)
-    reviews = models.ManyToManyField('Review', through='GearReview')
+    reviews = models.ManyToManyField('Review', through='GearReview', related_name="gear_reviews")

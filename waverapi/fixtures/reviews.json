@@ -4,7 +4,6 @@
         "pk": 1,
         "fields": {
             "waver_user": 1,
-            "gear": 1,
             "review": "It is an extremely expressive synth to play. The PolyBrute is laid out so logically that even though I've only had it for a month, I can already use it in the dark without needing to read the labels on the knobs or sliders. The possibilities on the mod-matrix are vast, but actually making it happen is really easy.",
             "rating": 5,
             "created_on": "2022-12-06"
@@ -15,7 +14,6 @@
         "pk": 2,
         "fields": {
             "waver_user": 1,
-            "gear": 2,
             "review": "The DSI Prophet 6 is probably the most compelling Analog Polyphonic Synthesizer on the market at the moment. Having learned synthesis on a Moog Modular in the 70's it is clear to me that this little beast is the real deal. A modern Analog Poly Synth wrapped in a very modern feature set. If you're looking for the classic Prophet 5 sound but did not want to deal with the unstable tuning headaches of the original then your ship just came in.",
             "rating": 5,
             "created_on": "2022-12-06"
@@ -26,7 +24,6 @@
         "pk": 3,
         "fields": {
             "waver_user": 2,
-            "gear": 3,
             "review": "Perfect, I Love It!",
             "rating": 4,
             "created_on": "2022-12-06"
@@ -37,7 +34,6 @@
         "pk": 4,
         "fields": {
             "waver_user": 1,
-            "gear": 3,
             "review": "Pretty Decent",
             "rating": 3,
             "created_on": "2022-12-12"
@@ -48,7 +44,6 @@
         "pk": 5,
         "fields": {
             "waver_user": 2,
-            "gear": 2,
             "review": "Amazing stuff, but not perfect.",
             "rating": 4,
             "created_on": "2022-12-15"
@@ -56,10 +51,9 @@
     },
     {
         "model": "waverapi.review",
-        "pk": 2,
+        "pk": 6,
         "fields": {
             "waver_user": 2,
-            "gear": 4,
             "review": "Too Thin. Not organic. Divey.",
             "rating": 2,
             "created_on": "2022-12-18"

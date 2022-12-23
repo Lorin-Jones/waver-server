@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from waverapi.models import Gear, GearType, Manufacturer, Specification
+from waverapi.models import Gear, GearType, Manufacturer, Specification, Review
 
 class GearView(ViewSet):
 
@@ -26,7 +26,7 @@ class GearView(ViewSet):
         gear = Gear.objects.all()
 
         if "gear_type" in request.query_params:
-            gear = gear.filter(gear_type__id = request.query_params['gear_type'])
+            gear = gear.filter(gear_type__id = request.query_params['specifications']['gear_type']['id'])
 
         serializer = GearSerializer(gear, many=True)
         return Response(serializer.data)   
@@ -37,21 +37,29 @@ class GearView(ViewSet):
         Returns
             Response -- JSON serialized game instance
         """
-        gear_type = GearType.objects.get(pk=request.data["gear_type"])
-        manufacturer = Manufacturer.objects.get(pk=request.data["manufacturer"])
-
+        manufacturer = Manufacturer.objects.get(pk=request.data['specifications']['manufacturer'])
+        gear_types = GearType.objects.get(pk=request.data['specifications']['gear_types'])
+        specifications = Specification.objects.create(
+            release_date = request.data['specifications']["release_date"],
+            manufacturer = manufacturer,
+            gear_types = gear_types,
+            number_of_keys = request.data['specifications']['number_of_keys'],
+            voices = request.data['specifications']['voices'],
+            arpeggiator = request.data['specifications']['arpeggiator'],
+            sequencer = request.data['specifications']['sequencer'],
+            velocity = request.data['specifications']['velocity'],
+            aftertouch = request.data['specifications']['aftertouch']
+        )
 
         gear = Gear.objects.create(
             name=request.data["name"],
             image=request.data["image"],
             price=request.data["price"],
             description=request.data["description"],
-            release_date=request.data["release_date"],
-            manufacturer=manufacturer,
-            gear_type=gear_type
-
-            
+            specifications = specifications
         )
+
+        
         serializer = GearSerializer(gear)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -61,39 +69,61 @@ class GearView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
+
+
         gear = Gear.objects.get(pk=pk)
         gear.name = request.data["name"]
         gear.image = request.data["image"]
         gear.price = request.data["price"]
         gear.description = request.data["description"]
-        gear.release_date = request.data["releaseDate"]
 
+        manufacturer = Manufacturer.objects.get(pk=request.data['specifications']['manufacturer'])
+        gear_types = GearType.objects.get(pk=request.data['specifications']['gear_types'])
 
+        specifications = Specification.objects.get(pk=pk)
+        specifications.release_date = request.data['specifications']["release_date"]
+        specifications.manufacturer = manufacturer
+        specifications.gear_types = gear_types
+        specifications.number_of_keys = request.data['specifications']["number_of_keys"]
+        specifications.voices = request.data['specifications']["voices"]
+        specifications.arpeggiator = request.data['specifications']["arpeggiator"]
+        specifications.sequencer = request.data['specifications']["sequencer"]
+        specifications.velocity = request.data['specifications']["velocity"]
+        specifications.aftertouch = request.data['specifications']["aftertouch"]
 
-        manufacturer = Manufacturer.objects.get(pk=request.data["manufacturerId"])
-        gear.manufacturer = manufacturer
-        gear_type = GearType.objects.get(pk=request.data["gearTypeId"])
-        gear.gear_type = gear_type
+        specifications.save()
         gear.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+        
+        
+
 
     def destroy(self, request, pk):
         gear = Gear.objects.get(pk=pk)
+
         gear.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 
 class GearSpecificationsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Specification
-        fields = ('description',)
+        fields = ('release_date', 'manufacturer', 'gear_types', 'number_of_keys', 'voices', 'arpeggiator', 'sequencer', 'velocity', 'aftertouch')
+
+class GearReviewSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Review
+        fields = ('id','waver_user', 'review', 'rating', 'created_on')
+        depth = 2
 
 class GearSerializer(serializers.ModelSerializer):
 
-    specifications = GearSpecificationsSerializer(many=True)
+    reviews = GearReviewSerializer(many=True)
 
     class Meta: 
         model = Gear
-        fields = ('id', 'name', 'image', 'price', 'description', "release_date", "manufacturer", "gear_type", "specifications" )
+        fields = ('id', 'name', 'image', 'price', 'description', "specifications", "reviews" )
         depth = 2
