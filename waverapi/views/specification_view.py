@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from waverapi.models import Specification
+from waverapi.models import Specification, Manufacturer, GearType
 
 class SpecificationView(ViewSet):
 
@@ -27,22 +27,47 @@ class SpecificationView(ViewSet):
         serializer = SpecificationSerializer(specification, many=True)
         return Response(serializer.data)   
 
-    def create(self, request):
-        """Handle POST operations
+    def update(self, request, pk):
+        """Handle PUT requests for a game
 
-        Returns
-            Response -- JSON serialized game instance
+        Returns:
+            Response -- Empty body with 204 status code
         """
-        specification = Specification.objects.create(
-            description=request.data["description"]
-        )
-        serializer = SpecificationSerializer(specification)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        manufacturer = Manufacturer.objects.get(pk=request.data['manufacturer'])
+        gear_types = GearType.objects.get(pk=request.data['gear_types'])
+
+        specifications = Specification.objects.get(pk=pk)
+        specifications.release_date = request.data["release_date"]
+        specifications.manufacturer = manufacturer
+        specifications.gear_types = gear_types
+        specifications.voices = request.data["voices"]
+        specifications.arpeggiator = request.data["arpeggiator"]
+        specifications.sequencer = request.data["sequencer"]
+        specifications.velocity = request.data["velocity"]
+        specifications.aftertouch = request.data["aftertouch"]
+
+        
+        specifications.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for waver_users
+
+        Returns:
+            Response: None with 204
+        """
+        review = Specification.objects.get(pk=pk)
+        
+        review.delete()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 class SpecificationSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Specification
-        fields = ('id', 'description', )
+        fields = ('id', 'release_date', 'manufacturer', 'gear_types', 'number_of_keys', 'voices', 'arpeggiator', 'sequencer', 'velocity', 'aftertouch' )
         

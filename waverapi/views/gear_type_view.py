@@ -34,10 +34,15 @@ class GearTypeView(ViewSet):
             Response -- JSON serialized game instance
         """
         gear_type = GearType.objects.create(
-            name=request.data["name"]
+            name=request.data['name']
         )
         serializer = GearTypeSerializer(gear_type)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def destroy(self, request, pk):
+        gear_type = GearType.objects.get(pk=pk)
+        gear_type.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 class GearTypeSerializer(serializers.ModelSerializer):

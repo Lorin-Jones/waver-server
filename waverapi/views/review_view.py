@@ -29,8 +29,8 @@ class ReviewView(ViewSet):
         """
         reviews = Review.objects.all()
 
-        if "gear" in request.query_params:
-            reviews = reviews.filter(gear__id = request.query_params['gear'])
+        # if "gear" in request.query_params:
+        #     reviews = reviews.filter(gear__id = request.query_params['gear'])
 
         serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)   
@@ -41,7 +41,7 @@ class ReviewView(ViewSet):
         Returns
             Response -- JSON serialized game instance
         """
-        required_fields = ['gearId', 'review']
+        required_fields = ['gear', 'review', 'rating']
         missing_fields = "Oops! It looks like you're missing a field!"
         is_field_missing = False
 
@@ -55,7 +55,7 @@ class ReviewView(ViewSet):
             return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
         try:
-            assigned_gear = Gear.objects.get(pk=request.data['gearId'])
+            assigned_gear = Gear.objects.get(pk=request.data['gear'])
         except Gear.DoesNotExist:
             return Response({"message": "The gear you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
@@ -64,12 +64,32 @@ class ReviewView(ViewSet):
         review.waver_user = waver_user
         review.gear = assigned_gear
         review.review = request.data['review']
+        review.rating = request.data['rating']
         review.created_on = date.today()
         review.save()
 
 
         serializer = ReviewSerializer(review)
         return Response(serializer.data, status = status.HTTP_201_CREATED)
+
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        reveiws = Review.objects.get(pk=pk)
+        reveiws.review = request.data["review"]
+        reveiws.rating = request.data['rating']
+        
+
+        
+        reveiws.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+       
+
 
     def destroy(self, request, pk=None):
         """Handle DELETE requests for waver_users
@@ -88,6 +108,6 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Review
-        fields = ('id', 'waver_user', 'gear', 'review', 'created_on' )
+        fields = ('id', 'waver_user', 'review', 'rating', 'created_on' )
         depth = 2
         

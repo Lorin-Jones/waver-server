@@ -3,7 +3,7 @@ from .manufacturer import Manufacturer
 from .gear_type import GearType
 from .waver_user import WaverUser
 from .specification import Specification
-from .gear_spec import GearSpec
+from .gear_review import GearReview
 from .post import Post
 from .comment import Comment
 from .review import Review
