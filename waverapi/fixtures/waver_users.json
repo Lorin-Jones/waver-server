@@ -5,7 +5,7 @@
         "fields": {
             "user":1,
             "bio": "I'm here to kick ass and chew bubble gum, and I'm all out of bubble gum.",
-            "gear": []
+            "gear": [1,2]
         }
     },
     {
@@ -14,7 +14,7 @@
         "fields": {
             "user":2,
             "bio": "I'm an angel!",
-            "gear": []
+            "gear": [3,4]
             
         }
     }

@@ -42,13 +42,13 @@ class ReviewView(ViewSet):
             Response -- JSON serialized game instance
         """
         required_fields = ['gear', 'review', 'rating']
-        missing_fields = "Oops! It looks like you're missing a field!"
+        missing_fields = 'Hey! You are missing'
         is_field_missing = False
 
         for field in required_fields:
             value = request.data.get(field, None)
             if value is None:
-                missing_fields = f'{missing_fields} and {field}'
+                missing_fields = f'{missing_fields} {field}'
                 is_field_missing = True
 
         if is_field_missing:
@@ -59,13 +59,14 @@ class ReviewView(ViewSet):
         except Gear.DoesNotExist:
             return Response({"message": "The gear you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
-        waver_user = WaverUser.objects.get(pk = request.auth.user.pk)
+        waver_user = WaverUser.objects.get(pk=request.auth.user.id)
         review = Review()
         review.waver_user = waver_user
         review.gear = assigned_gear
         review.review = request.data['review']
         review.rating = request.data['rating']
         review.created_on = date.today()
+
         review.save()
 
 
@@ -108,6 +109,6 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Review
-        fields = ('id', 'waver_user', 'review', 'rating', 'created_on' )
+        fields = ('id', 'waver_user', 'gear', 'review', 'rating', 'created_on' )
         depth = 2
         

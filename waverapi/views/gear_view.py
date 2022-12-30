@@ -4,15 +4,20 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from waverapi.models import Gear, GearType, Manufacturer, Specification, Review
+from rest_framework.decorators import action
+
+
 
 class GearView(ViewSet):
 
+    
     def retrieve(self, request, pk):
         """Handle GET requests for single game type
 
         Returns:
             Response -- JSON serialized game type
         """
+        
         gear = Gear.objects.get(pk=pk)
         serializer = GearSerializer(gear)
         return Response(serializer.data)
@@ -25,8 +30,14 @@ class GearView(ViewSet):
         """
         gear = Gear.objects.all()
 
-        if "gear_type" in request.query_params:
-            gear = gear.filter(gear_type__id = request.query_params['specifications']['gear_type']['id'])
+        if "gear_types" in request.query_params:
+            gear_types_id = request.query_params['gear_types']
+            gear = gear.filter(specifications__gear_types__id=gear_types_id)
+
+        if "name" in request.query_params:
+            name = request.query_params['name']
+            gear = gear.filter(name__contains=name)
+
 
         serializer = GearSerializer(gear, many=True)
         return Response(serializer.data)   
@@ -106,24 +117,16 @@ class GearView(ViewSet):
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
+
 class GearSpecificationsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Specification
         fields = ('release_date', 'manufacturer', 'gear_types', 'number_of_keys', 'voices', 'arpeggiator', 'sequencer', 'velocity', 'aftertouch')
 
-class GearReviewSerializer(serializers.ModelSerializer):
-
-    class Meta: 
-        model = Review
-        fields = ('id','waver_user', 'review', 'rating', 'created_on')
-        depth = 2
-
 class GearSerializer(serializers.ModelSerializer):
-
-    reviews = GearReviewSerializer(many=True)
 
     class Meta: 
         model = Gear
-        fields = ('id', 'name', 'image', 'price', 'description', "specifications", "reviews" )
-        depth = 2
+        fields = ('id', 'name', 'image', 'price', 'description', "specifications", "reviews", "average_rating" )
+        depth = 3

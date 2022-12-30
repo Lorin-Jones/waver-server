@@ -33,6 +33,34 @@
         "fields": {
             "name": "Chase Bliss"
         }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 6,
+        "fields": {
+            "name": "Korg"
+        }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 7,
+        "fields": {
+            "name": "Earthquaker Devices"
+        }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 8,
+        "fields": {
+            "name": "Yamaha"
+        }
+    },
+    {
+        "model": "waverapi.manufacturer",
+        "pk": 9,
+        "fields": {
+            "name": "Elektron"
+        }
     }
 
 ]

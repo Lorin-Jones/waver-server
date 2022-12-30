@@ -24,6 +24,11 @@ from waverapi.views.gear_type_view import GearTypeView
 from waverapi.views.manufacturer_view import ManufacturerView
 from waverapi.views.specification_view import SpecificationView
 from waverapi.views.review_view import ReviewView
+from waverapi.views.used_gear_view import UsedGearView
+from waverapi.views.post_view import PostView
+
+
+
 
 
 
@@ -34,6 +39,10 @@ router.register(r'gear_type', GearTypeView, 'gear_type')
 router.register(r'manufacturers', ManufacturerView, 'manufacturer')
 router.register(r'specifications', SpecificationView, 'specification')
 router.register(r'reviews', ReviewView, 'review')
+router.register(r'used_gear', UsedGearView, 'used_gear')
+router.register(r'posts', PostView, 'post')
+
+
 
 
 

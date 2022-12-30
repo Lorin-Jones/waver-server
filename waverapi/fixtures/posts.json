@@ -4,9 +4,10 @@
         "pk": 1,
         "fields": {
             "user": 1,
-            "title": "Which is better, the Polybrute or the Prophet-6?",
+            "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1672336800/A-16261-1340707738-1791_toncdn.jpg",
+            "title": "Wendy Carlos, one of the earliest synth pioneers, is also a trans icon",
             "publication_date": "2022-12-06",
-            "content": "I'm looking to purchase a flagship synth, and I'm not certain where to put my money. I'm interested in the sound design aspects of the Polybrute, but I've heard that the Prophet has a richer, more immediate sound."
+            "content": "<p>One of the most significant contributors to the world of electronic synthesis is the composer Wendy Carlos. She began her career with a masters in both music and physics from Brown University, and went on to partner with Bob Moog, producer of one of the world’s first synthesizers. Wendy provided Moog with inspiration for elements like a touch sensitive device for greater expression, and recorded the famous breakout synth album, Switched on Bach, using the Moog Synthesizer.</p><br><p></p>In addition to her incredible journey as a musician, Wendy was also a transgender pioneer. Born Walter Carlos, Wendy began her transition as early as 1968. Early in her transition, Carlos would interview wearing a wig and fake sideburns to appear as a man despite living as a woman and undergoing hormone therapy. Wendy was eventually able to make a public transition with strong support from fans.</p><br><p>Wendy went on to produce and compose unforgettable synthesizer soundtracks to major films, including two Stanley Kubrick films, A Clockwork Orange and The Shining, and Disney’s TRON. She has been a tremendously influential pioneer throughout her life.</p>"
 
         }
     }

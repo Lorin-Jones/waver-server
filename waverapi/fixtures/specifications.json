@@ -88,6 +88,21 @@
             "velocity": null, 
             "aftertouch": null 
         }
+    },
+    {
+        "model": "waverapi.specification",
+        "pk": 7,
+        "fields": {
+            "release_date": 2017,
+            "manufacturer": 9,
+            "gear_types": 5,
+            "number_of_keys": "",
+            "voices": "8-Voices",
+            "arpeggiator": true,
+            "sequencer": true, 
+            "velocity": true, 
+            "aftertouch": true 
+        }
     }
     
 ]

@@ -26,5 +26,12 @@
         "fields": {
             "name": "Effect Pedal"
         }
+    },
+    {
+        "model": "waverapi.geartype",
+        "pk": 5,
+        "fields": {
+            "name": "Drum Machines and Samplers"
+        }
     }
 ]

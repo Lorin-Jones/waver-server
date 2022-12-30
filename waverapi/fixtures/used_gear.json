@@ -1,0 +1,43 @@
+[
+    {
+        "model": "waverapi.usedgear",
+        "pk": 1,
+        "fields": {
+            "waver_user": 1,
+            "item": "Microfreak",
+            "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670343348/Waver/Gear%20Images/microfreak_pi6lsj.webp",
+            "price": 250.00,
+            "details": "Gently Used. Original box and instruction manual."
+
+        }
+        
+    },
+    {
+        "model": "waverapi.usedgear",
+        "pk": 2,
+        "fields": {
+            "waver_user": 2,
+            "item": "Earthquaker Plumes",
+            "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670343348/Waver/Gear%20Images/microfreak_pi6lsj.webp",
+            "price": 60.00,
+            "details": "Perfect Dirt Pedal."
+
+        }
+        
+    },
+    {
+        "model": "waverapi.usedgear",
+        "pk": 3,
+        "fields": {
+            "waver_user": 1,
+            "item": "Fairfield Circuitry Shallow Water",
+            "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1672171755/shallowwater_smrss5.webp",
+            "price": 310.00,
+            "details": "Excellent Condition. My all time favorite effect."
+
+        }
+        
+    }
+    
+    
+]
