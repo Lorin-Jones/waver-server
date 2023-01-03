@@ -39,6 +39,18 @@ class GearTypeView(ViewSet):
         serializer = GearTypeSerializer(gear_type)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        gear_type = GearType.objects.get(pk=pk)
+        gear_type.name = request.data["name"]
+
+        gear_type.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+        
     def destroy(self, request, pk):
         gear_type = GearType.objects.get(pk=pk)
         gear_type.delete()

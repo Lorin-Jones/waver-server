@@ -48,18 +48,18 @@ class GearView(ViewSet):
         Returns
             Response -- JSON serialized game instance
         """
-        manufacturer = Manufacturer.objects.get(pk=request.data['specifications']['manufacturer'])
-        gear_types = GearType.objects.get(pk=request.data['specifications']['gear_types'])
+        manufacturer = Manufacturer.objects.get(pk=request.data['manufacturer'])
+        gear_types = GearType.objects.get(pk=request.data['gear_types'])
         specifications = Specification.objects.create(
-            release_date = request.data['specifications']["release_date"],
+            release_date = request.data["release_date"],
             manufacturer = manufacturer,
             gear_types = gear_types,
-            number_of_keys = request.data['specifications']['number_of_keys'],
-            voices = request.data['specifications']['voices'],
-            arpeggiator = request.data['specifications']['arpeggiator'],
-            sequencer = request.data['specifications']['sequencer'],
-            velocity = request.data['specifications']['velocity'],
-            aftertouch = request.data['specifications']['aftertouch']
+            number_of_keys = request.data['number_of_keys'],
+            voices = request.data['voices'],
+            arpeggiator = request.data['arpeggiator'],
+            sequencer = request.data['sequencer'],
+            velocity = request.data['velocity'],
+            aftertouch = request.data['aftertouch']
         )
 
         gear = Gear.objects.create(
@@ -88,19 +88,19 @@ class GearView(ViewSet):
         gear.price = request.data["price"]
         gear.description = request.data["description"]
 
-        manufacturer = Manufacturer.objects.get(pk=request.data['specifications']['manufacturer'])
-        gear_types = GearType.objects.get(pk=request.data['specifications']['gear_types'])
+        manufacturer = Manufacturer.objects.get(pk=request.data['manufacturer'])
+        gear_types = GearType.objects.get(pk=request.data['gear_types'])
 
         specifications = Specification.objects.get(pk=pk)
-        specifications.release_date = request.data['specifications']["release_date"]
+        specifications.release_date = request.data["release_date"]
         specifications.manufacturer = manufacturer
         specifications.gear_types = gear_types
-        specifications.number_of_keys = request.data['specifications']["number_of_keys"]
-        specifications.voices = request.data['specifications']["voices"]
-        specifications.arpeggiator = request.data['specifications']["arpeggiator"]
-        specifications.sequencer = request.data['specifications']["sequencer"]
-        specifications.velocity = request.data['specifications']["velocity"]
-        specifications.aftertouch = request.data['specifications']["aftertouch"]
+        specifications.number_of_keys = request.data["number_of_keys"]
+        specifications.voices = request.data["voices"]
+        specifications.arpeggiator = request.data["arpeggiator"]
+        specifications.sequencer = request.data["sequencer"]
+        specifications.velocity = request.data["velocity"]
+        specifications.aftertouch = request.data["aftertouch"]
 
         specifications.save()
         gear.save()
