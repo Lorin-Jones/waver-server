@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from waverapi.models import WaverUser
+from waverapi.models import WaverUser, Gear
 from django.contrib.auth.models import User
 
 
@@ -29,7 +29,7 @@ class WaverUserView(ViewSet):
         """
 
         user = WaverUser.objects.get(pk=pk)
-        serialized = WaverUserSerializer(user, context={'request': request})
+        serialized = DetailedUserSerializer(user, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk):
@@ -45,7 +45,7 @@ class WaverUserView(ViewSet):
             user.first_name = request.data['user']["first_name"]
             user.last_name = request.data['user']["last_name"]
             user.email = request.data['user']["email"]
-            user.is_staff = request.data['user']["is_staff"]
+            user.is_staff = request.data["is_staff"]
 
             waver_user.save()
             user.save()
@@ -65,6 +65,11 @@ class WaverUserView(ViewSet):
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+class UserGearSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gear
+        fields = ('name', 'image')
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -78,3 +83,12 @@ class WaverUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = WaverUser
         fields = ( 'id', 'user', 'bio', 'full_name')
+
+class DetailedUserSerializer(serializers.ModelSerializer):
+    """JSON serializer for users"""
+    user = UserSerializer(many=False)
+    gear = UserGearSerializer(many=True)
+    
+    class Meta:
+        model = WaverUser
+        fields = ( 'id', 'user', 'bio', 'full_name', 'gear')

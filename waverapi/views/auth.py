@@ -29,6 +29,7 @@ def login_user(request):
         token = Token.objects.get(user=authenticated_user)
 
         data = {
+            'id': authenticated_user.id,
             'valid': True,
             'token': token.key,
             'is_staff': authenticated_user.is_staff

@@ -43,7 +43,7 @@ class GearTests(APITestCase):
             "release_date": 2020,
             "manufacturer": 1,
             "gear_type": 1,
-            "specifications": [1,2,3]
+            "specifications": 1
         }
 
         # Initiate request and store response
