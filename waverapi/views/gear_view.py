@@ -112,8 +112,10 @@ class GearView(ViewSet):
 
     def destroy(self, request, pk):
         gear = Gear.objects.get(pk=pk)
+        # specifications = Specification.objects.get(pk=pk)
 
         gear.delete()
+        # specifications.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 

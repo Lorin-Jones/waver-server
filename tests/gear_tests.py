@@ -21,8 +21,17 @@ class GearTests(APITestCase):
             name='test gear_type',
         )
         self.specifications = Specification.objects.create(
-            description='test specifications'
+            release_date = 2011,
+            manufacturer = self.manufacturer,
+            gear_types = self.gear_type,
+            number_of_keys = "test",
+            voices = "test",
+            arpeggiator = False,
+            sequencer = False,
+            velocity = False,
+            aftertouch = False
         )
+       
 
 
 
@@ -40,10 +49,15 @@ class GearTests(APITestCase):
             "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg",
             "price": 749,
             "description": "opsix is a digital synth unlike any other, with sounds to match. Instantly explore hundreds of fresh, cutting-edge sounds to inspire your next musical project! Go even further with the power of customization right at your fingertips. Front panel colored controls provide easy access for dramatic shifts in sound characteristics, from icy, sparkling chimes to fuzzy, deep basses. The opsix is an entirely new tool that reveals a world of frequency exploration and a wide range of dynamic possibilities.",
-            "release_date": 2020,
+            "release_date": 2021,
+            "number_of_keys": "61-Key",
+            "voices": "6-Voices",
+            "arpeggiator": True,
+            "sequencer": True,
+            "velocity": True,
+            "aftertouch": True,
             "manufacturer": 1,
-            "gear_type": 1,
-            "specifications": 1
+            "gear_types": 1
         }
 
         # Initiate request and store response
@@ -60,8 +74,18 @@ class GearTests(APITestCase):
         self.assertEqual(json_response["image"], "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg")
         self.assertEqual(json_response["price"], 749)
         self.assertEqual(json_response["description"], "opsix is a digital synth unlike any other, with sounds to match. Instantly explore hundreds of fresh, cutting-edge sounds to inspire your next musical project! Go even further with the power of customization right at your fingertips. Front panel colored controls provide easy access for dramatic shifts in sound characteristics, from icy, sparkling chimes to fuzzy, deep basses. The opsix is an entirely new tool that reveals a world of frequency exploration and a wide range of dynamic possibilities.")
-        self.assertEqual(json_response["release_date"], 2020)
-       
+        self.assertEqual(json_response['specifications']["release_date"], 2021)
+        self.assertEqual(json_response['specifications']["number_of_keys"], "61-Key")
+        self.assertEqual(json_response['specifications']["voices"], "6-Voices")
+        self.assertEqual(json_response['specifications']["arpeggiator"], True)
+        self.assertEqual(json_response['specifications']["sequencer"], True)
+        self.assertEqual(json_response['specifications']["velocity"], True)
+        self.assertEqual(json_response['specifications']["aftertouch"], True)
+
+
+
+
+
     def test_get_gear(self):
         """
         Ensure we can get an existing game.
@@ -73,13 +97,9 @@ class GearTests(APITestCase):
         gear.image = "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg"
         gear.price = 399
         gear.description = "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer."
-        gear.release_date = 2016
-        gear.manufacturer_id = 1
-        gear.gear_type_id = 2
+        gear.specifications = self.specifications
         gear.save()
-        gear.specifications.add(1)
-        gear.specifications.add(2)
-        gear.specifications.add(3)
+        
 
         # Initiate request and store response
         response = self.client.get(f"/gear/{gear.id}")
@@ -95,61 +115,85 @@ class GearTests(APITestCase):
         self.assertEqual(json_response["image"], "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg")
         self.assertEqual(json_response["price"], 399)
         self.assertEqual(json_response["description"], "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer.")
-        self.assertEqual(json_response["release_date"], 2016)
+        
 
-    # def test_change_gear(self):
-    #     """
-    #     Ensure we can change an existing game.
-    #     """
-    #     gear = Gear()
-    #     gear.name = "Minilogue"
-    #     gear.image = "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg"
-    #     gear.price = 399
-    #     gear.description = "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer."
-    #     gear.release_date = 2016
-    #     gear.manufacturer_id = 1
-    #     gear.gear_type_id = 2
-    #     gear.save()
+    def test_change_gear(self):
+        """
+        Ensure we can change an existing game.
+        """
+        gear = Gear()
+        gear.name = "Minilogue"
+        gear.image = "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg"
+        gear.price = 399
+        gear.description = "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer."
+        gear.specifications = self.specifications
+        gear.save()
 
-    #     # DEFINE NEW PROPERTIES FOR GAME
-    #     data = {
-    #         "name": "OpSix",
-    #         "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg",
-    #         "price": 749,
-    #         "description": "opsix is a digital synth unlike any other, with sounds to match. Instantly explore hundreds of fresh, cutting-edge sounds to inspire your next musical project! Go even further with the power of customization right at your fingertips. Front panel colored controls provide easy access for dramatic shifts in sound characteristics, from icy, sparkling chimes to fuzzy, deep basses. The opsix is an entirely new tool that reveals a world of frequency exploration and a wide range of dynamic possibilities.",
-    #         "release_date": 2020,
-    #         "manufacturer": 2,
-    #         "gear_type": 1,
+        # DEFINE NEW PROPERTIES FOR GAME
+        data = {
+            "name": "Oopsie",
+            "image": "an image",
+            "price": 499,
+            "description": "some text",
+            "release_date": 2017,
+            "number_of_keys": "32-Key",
+            "voices": "4-Voices",
+            "arpeggiator": False,
+            "sequencer": True,
+            "velocity": False,
+            "aftertouch": True,
+            "manufacturer": 2,
+            "gear_types": 2
             
-    #     }
+        }
 
-    #     response = self.client.put(f"/gear/{gear.id}", data, format="json")
-    #     self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        response = self.client.put(f"/gear/{gear.id}", data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    #     # GET game again to verify changes were made
-    #     response = self.client.get(f"/gear/{gear.id}")
-    #     json_response = json.loads(response.content)
+        # GET game again to verify changes were made
+        response = self.client.get(f"/gear/{gear.id}")
+        json_response = json.loads(response.content)
 
-    #     # Assert that the properties are correct
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
-    #     self.assertEqual(json_response["name"], "OpSix")
-    #     self.assertEqual(json_response["image"], "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg")
-    #     self.assertEqual(json_response["price"], 749)
-    #     self.assertEqual(json_response["description"], "opsix is a digital synth unlike any other, with sounds to match. Instantly explore hundreds of fresh, cutting-edge sounds to inspire your next musical project! Go even further with the power of customization right at your fingertips. Front panel colored controls provide easy access for dramatic shifts in sound characteristics, from icy, sparkling chimes to fuzzy, deep basses. The opsix is an entirely new tool that reveals a world of frequency exploration and a wide range of dynamic possibilities.")
-    #     self.assertEqual(json_response["release_date"], 2020)
+        # Assert that the properties are correct
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(json_response["name"], "Oopsie")
+        self.assertEqual(json_response["image"], "an image")
+        self.assertEqual(json_response["price"], 499)
+        self.assertEqual(json_response["description"], "some text")
+        self.assertEqual(json_response['specifications']["release_date"], 2017)
+        self.assertEqual(json_response['specifications']["number_of_keys"], "32-Key")
+        self.assertEqual(json_response['specifications']["voices"], "4-Voices")
+        self.assertEqual(json_response['specifications']["arpeggiator"], False)
+        self.assertEqual(json_response['specifications']["sequencer"], True)
+        self.assertEqual(json_response['specifications']["velocity"], False)
+        self.assertEqual(json_response['specifications']["aftertouch"], True)
+
 
     # def test_delete_gear(self):
     #     """
     #     Ensure we can delete an existing gear.
     #     """
+       
+
+
+    #     specifications = Specification()
+    #     specifications.release_date = 2017
+    #     specifications.number_of_keys= "32-Key"
+    #     specifications.voices= "4-Voices"
+    #     specifications.arpeggiator= False
+    #     specifications.sequencer= True
+    #     specifications.velocity= False
+    #     specifications.aftertouch= True
+    #     specifications.manufacturer= Manufacturer.objects.get(pk=1)
+    #     specifications.gear_types= GearType.objects.get(pk=1)
+    #     specifications.save()
+
     #     gear = Gear()
     #     gear.name = "Minilogue"
     #     gear.image = "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg"
     #     gear.price = 399
     #     gear.description = "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer."
-    #     gear.release_date = 2016
-    #     gear.manufacturer_id = 1
-    #     gear.gear_type_id = 2
+    #     gear.specifications = specifications
     #     gear.save()
 
     #     # DELETE the gear you just created
@@ -159,3 +203,6 @@ class GearTests(APITestCase):
     #     # GET the gear again to verify you get a 404 response
     #     response = self.client.get(f"/gear/{gear.id}")
     #     self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+       
+       
+       

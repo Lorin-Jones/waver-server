@@ -3,19 +3,18 @@
         "model": "waverapi.waveruser",
         "pk": 1,
         "fields": {
-            "user":1,
+            "user": 1,
             "bio": "I'm here to kick ass and chew bubble gum, and I'm all out of bubble gum.",
-            "gear": [1,2]
+            "image": ""
         }
     },
     {
         "model": "waverapi.waveruser",
         "pk": 2,
         "fields": {
-            "user":2,
+            "user": 2,
             "bio": "I'm an angel!",
-            "gear": [3,4]
-            
+            "image": ""
         }
     }
 ]

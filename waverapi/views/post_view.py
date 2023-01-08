@@ -57,8 +57,8 @@ class PostView(ViewSet):
             Response -- Empty body with 204 status code
         """
         post = Post.objects.get(pk=pk)
-        post.title = request.data["title"],
-        post.image = request.data["image"],
+        post.title = request.data["title"]
+        post.image = request.data["image"]
         post.content = request.data['content']
 
         post.save()
