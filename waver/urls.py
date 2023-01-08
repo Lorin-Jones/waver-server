@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
+from django.urls import re_path
 from waverapi.views import register_user, login_user
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
 from rest_framework import routers
 from waverapi.views.waver_user_view import WaverUserView
 from waverapi.views.gear_view import GearView
@@ -27,6 +31,19 @@ from waverapi.views.review_view import ReviewView
 from waverapi.views.used_gear_view import UsedGearView
 from waverapi.views.post_view import PostView
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Waver API",
+        default_version='v1',
+        description="API for Synthesizer enthusiasts",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@waver.local"),
+        license=openapi.License(name="BSD License"),
+    ),
+
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
 
 
 
@@ -48,6 +65,7 @@ router.register(r'posts', PostView, 'post')
 
 
 
+
 # router.register(r'tickets', TicketView, 'serviceTicket')
 
 urlpatterns = [
@@ -55,4 +73,6 @@ urlpatterns = [
     path('login', login_user),
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('swagger', schema_view.with_ui('swagger',
+            cache_timeout=0), name='schema-swagger-ui'),
 ]

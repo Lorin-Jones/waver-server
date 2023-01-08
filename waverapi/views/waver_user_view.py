@@ -41,6 +41,7 @@ class WaverUserView(ViewSet):
             waver_user = WaverUser.objects.get(pk=pk)
             user = User.objects.get(pk=pk)
             waver_user.bio = request.data['bio']
+            waver_user.image = request.data['image']
             user.username = request.data['user']["username"]
             user.first_name = request.data['user']["first_name"]
             user.last_name = request.data['user']["last_name"]
@@ -82,7 +83,7 @@ class WaverUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WaverUser
-        fields = ( 'id', 'user', 'bio', 'full_name')
+        fields = ( 'id', 'user', 'image', 'bio', 'full_name')
 
 class DetailedUserSerializer(serializers.ModelSerializer):
     """JSON serializer for users"""
@@ -91,4 +92,4 @@ class DetailedUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WaverUser
-        fields = ( 'id', 'user', 'bio', 'full_name', 'gear')
+        fields = ( 'id', 'user', 'image', 'bio', 'full_name', 'gear')
