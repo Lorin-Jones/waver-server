@@ -10,5 +10,29 @@
             "content": "<p>One of the most significant contributors to the world of electronic synthesis is the composer Wendy Carlos. She began her career with a masters in both music and physics from Brown University, and went on to partner with Bob Moog, producer of one of the world’s first synthesizers. Wendy provided Moog with inspiration for elements like a touch sensitive device for greater expression, and recorded the famous breakout synth album, Switched on Bach, using the Moog Synthesizer.</p><br><p></p>In addition to her incredible journey as a musician, Wendy was also a transgender pioneer. Born Walter Carlos, Wendy began her transition as early as 1968. Early in her transition, Carlos would interview wearing a wig and fake sideburns to appear as a man despite living as a woman and undergoing hormone therapy. Wendy was eventually able to make a public transition with strong support from fans.</p><br><p>Wendy went on to produce and compose unforgettable synthesizer soundtracks to major films, including two Stanley Kubrick films, A Clockwork Orange and The Shining, and Disney’s TRON. She has been a tremendously influential pioneer throughout her life.</p>"
 
         }
+    },
+    {
+        "model": "waverapi.post",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1673232817/Roland-Jupiter-8-logo_wogrqo.jpg",
+            "title": "How Roland's Jupiter-8 defined the sounds of 80's pop music.",
+            "publication_date": "2022-12-25",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam. Vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam. Fames ac turpis egestas sed tempus urna. Enim ut tellus elementum sagittis vitae et leo duis. In ornare quam viverra orci sagittis eu volutpat. A scelerisque purus semper eget duis at tellus.</p><p>Cras sed felis eget velit aliquet sagittis id consectetur purus. Sed risus ultricies tristique nulla aliquet enim tortor. Fermentum dui faucibus in ornare quam viverra orci sagittis eu. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus.</p>"
+
+        }
+    },
+    {
+        "model": "waverapi.post",
+        "pk": 3,
+        "fields": {
+            "user": 2,
+            "image": "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1673234202/vangelis_wteh7f.jpg",
+            "title": "Remembering Vangelis Papathanassiou",
+            "publication_date": "2022-01-06",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus auctor nisi eget nisl placerat, at pellentesque lacus efficitur. Sed hendrerit mollis dui a faucibus. Cras scelerisque diam quis urna condimentum, sit amet aliquet metus lobortis. Duis scelerisque orci vel lacus elementum, vel tincidunt magna viverra. Nulla facilisi. Sed vel libero eu purus tristique placerat a sed leo. Suspendisse mollis, est quis luctus maximus, nisi nisl facilisis velit, vel blandit ante quam a ipsum.</p><p>Praesent quis tempus tellus. Proin iaculis justo in tellus pulvinar, at ultricies nibh euismod. Curabitur sit amet semper purus, at pharetra orci. Aliquam tincidunt bibendum tellus, non pulvinar arcu tempus non. Integer nec enim in orci condimentum congue. Aliquam erat volutpat. Nunc facilisis, ipsum at placerat ultricies, tellus ligula posuere metus, non euismod nulla ligula in dolor. Sed id placerat elit, a dictum purus. In fringilla, massa eget faucibus viverra, velit nibh placerat tortor, vel sollicitudin nisi ipsum eget dolor.</p>"
+
+        }
     }
 ]
