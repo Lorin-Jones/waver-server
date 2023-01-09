@@ -3,21 +3,21 @@
         "model": "waverapi.geartype",
         "pk": 1,
         "fields": {
-            "name": "Polyphonic Synthesizer"
+            "name": "Analog"
         }
     },
     {
         "model": "waverapi.geartype",
         "pk": 2,
         "fields": {
-            "name": "Monophonic Synthesizer"
+            "name": "Digital"
         }
     },
     {
         "model": "waverapi.geartype",
         "pk": 3,
         "fields": {
-            "name": "Duophonic Synthesizer"
+            "name": "Midi Controller"
         }
     },
     {
