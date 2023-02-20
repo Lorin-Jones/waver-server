@@ -169,40 +169,30 @@ class GearTests(APITestCase):
         self.assertEqual(json_response['specifications']["aftertouch"], True)
 
 
-    # def test_delete_gear(self):
-    #     """
-    #     Ensure we can delete an existing gear.
-    #     """
+    def test_delete_gear(self):
+        """
+        Ensure we can delete an existing gear.
+        """
        
 
 
-    #     specifications = Specification()
-    #     specifications.release_date = 2017
-    #     specifications.number_of_keys= "32-Key"
-    #     specifications.voices= "4-Voices"
-    #     specifications.arpeggiator= False
-    #     specifications.sequencer= True
-    #     specifications.velocity= False
-    #     specifications.aftertouch= True
-    #     specifications.manufacturer= Manufacturer.objects.get(pk=1)
-    #     specifications.gear_types= GearType.objects.get(pk=1)
-    #     specifications.save()
+    
 
-    #     gear = Gear()
-    #     gear.name = "Minilogue"
-    #     gear.image = "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg"
-    #     gear.price = 399
-    #     gear.description = "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer."
-    #     gear.specifications = specifications
-    #     gear.save()
+        gear = Gear()
+        gear.name = "Minilogue"
+        gear.image = "https://res.cloudinary.com/dlr2tm7qr/image/upload/v1670526920/Waver/Gear%20Images/opsix_k7ojgc.jpg"
+        gear.price = 399
+        gear.description = "Meet minilogue; the stylish, innovative, 37 slim-key fully programmable analog polyphonic synthesizer."
+        gear.specifications = self.specifications
+        gear.save()
 
-    #     # DELETE the gear you just created
-    #     response = self.client.delete(f"/gear/{gear.id}")
-    #     self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        # DELETE the gear you just created
+        response = self.client.delete(f"/gear/{gear.id}")
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    #     # GET the gear again to verify you get a 404 response
-    #     response = self.client.get(f"/gear/{gear.id}")
-    #     self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        # GET the gear again to verify you get a 404 response
+        response = self.client.get(f"/gear/{gear.id}")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
        
        
        

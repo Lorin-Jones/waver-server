@@ -17,10 +17,19 @@ class GearView(ViewSet):
         Returns:
             Response -- JSON serialized game type
         """
-        
-        gear = Gear.objects.get(pk=pk)
-        serializer = GearSerializer(gear)
-        return Response(serializer.data)
+        try:
+            # SELECT * FROM levelupapi_gametype WHERE id = ?
+            gear = Gear.objects.get(pk=pk)
+            serializer = GearSerializer(
+                gear, context={'request':request})
+            
+            return Response(serializer.data)
+
+        except Gear.DoesNotExist as ex:
+            return Response({'message': 'Game does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+
 
     def list(self, request):
         """Handle GET requests to get all game types
@@ -110,13 +119,24 @@ class GearView(ViewSet):
         
 
 
-    def destroy(self, request, pk):
-        gear = Gear.objects.get(pk=pk)
-        # specifications = Specification.objects.get(pk=pk)
+    def destroy(self, request, pk=None):
+        try:
+            gear = Gear.objects.get(pk=pk)
+            specifications = Specification.objects.get(pk=pk)
 
-        gear.delete()
-        # specifications.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+            gear.delete()
+            specifications.delete()
+            
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except Gear.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    
+
 
 
 
