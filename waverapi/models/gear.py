@@ -23,4 +23,4 @@ class Gear(models.Model):
             avg = avg / len(all_ratings)
         except ZeroDivisionError:
             pass
-        return avg
+        return round(avg)
