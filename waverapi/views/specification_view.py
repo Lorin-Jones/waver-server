@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from waverapi.models import Specification, Manufacturer, GearType
+from waverapi.models import Specifications, Manufacturer, GearType
 
 class SpecificationView(ViewSet):
 
@@ -13,8 +13,8 @@ class SpecificationView(ViewSet):
         Returns:
             Response -- JSON serialized game type
         """
-        specification = Specification.objects.get(pk=pk)
-        serializer = SpecificationSerializer(specification)
+        specifications = Specifications.objects.get(pk=pk)
+        serializer = SpecificationSerializer(specifications)
         return Response(serializer.data)
 
     def list(self, request):
@@ -23,8 +23,8 @@ class SpecificationView(ViewSet):
         Returns:
             Response -- JSON serialized list of game types
         """
-        specification = Specification.objects.all()
-        serializer = SpecificationSerializer(specification, many=True)
+        specifications = Specifications.objects.all()
+        serializer = SpecificationSerializer(specifications, many=True)
         return Response(serializer.data)   
 
     def update(self, request, pk):
@@ -37,7 +37,7 @@ class SpecificationView(ViewSet):
         manufacturer = Manufacturer.objects.get(pk=request.data['manufacturer'])
         gear_types = GearType.objects.get(pk=request.data['gear_types'])
 
-        specifications = Specification.objects.get(pk=pk)
+        specifications = Specifications.objects.get(pk=pk)
         specifications.release_date = request.data["release_date"]
         specifications.manufacturer = manufacturer
         specifications.gear_types = gear_types
@@ -58,7 +58,7 @@ class SpecificationView(ViewSet):
         Returns:
             Response: None with 204
         """
-        review = Specification.objects.get(pk=pk)
+        review = Specifications.objects.get(pk=pk)
         
         review.delete()
 
@@ -68,6 +68,6 @@ class SpecificationView(ViewSet):
 class SpecificationSerializer(serializers.ModelSerializer):
 
     class Meta: 
-        model = Specification
+        model = Specifications
         fields = ('id', 'release_date', 'manufacturer', 'gear_types', 'number_of_keys', 'voices', 'arpeggiator', 'sequencer', 'velocity', 'aftertouch' )
         

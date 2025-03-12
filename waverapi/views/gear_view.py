@@ -3,8 +3,10 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from waverapi.models import Gear, GearType, Manufacturer, Specification, Review
+from waverapi.models import Gear, GearType, Manufacturer, Review
 from rest_framework.decorators import action
+
+from waverapi.models.specification import Specifications
 
 
 
@@ -59,7 +61,7 @@ class GearView(ViewSet):
         """
         manufacturer = Manufacturer.objects.get(pk=request.data['manufacturer'])
         gear_types = GearType.objects.get(pk=request.data['gear_types'])
-        specifications = Specification.objects.create(
+        specifications = Specifications.objects.create(
             release_date = request.data["release_date"],
             manufacturer = manufacturer,
             gear_types = gear_types,
@@ -100,7 +102,7 @@ class GearView(ViewSet):
         manufacturer = Manufacturer.objects.get(pk=request.data['manufacturer'])
         gear_types = GearType.objects.get(pk=request.data['gear_types'])
 
-        specifications = Specification.objects.get(pk=pk)
+        specifications = Specifications.objects.get(pk=pk)
         specifications.release_date = request.data["release_date"]
         specifications.manufacturer = manufacturer
         specifications.gear_types = gear_types
@@ -122,7 +124,7 @@ class GearView(ViewSet):
     def destroy(self, request, pk=None):
         try:
             gear = Gear.objects.get(pk=pk)
-            specifications = Specification.objects.get(pk=pk)
+            specifications = Specifications.objects.get(pk=pk)
 
             gear.delete()
             specifications.delete()
@@ -143,7 +145,7 @@ class GearView(ViewSet):
 class GearSpecificationsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Specification
+        model = Specifications
         fields = ('release_date', 'manufacturer', 'gear_types', 'number_of_keys', 'voices', 'arpeggiator', 'sequencer', 'velocity', 'aftertouch')
 
 class GearSerializer(serializers.ModelSerializer):

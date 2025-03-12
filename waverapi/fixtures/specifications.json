@@ -1,6 +1,6 @@
 [
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 1,
         "fields": {
             "release_date": 2021,
@@ -15,7 +15,7 @@
         }
     },
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 2,
         "fields": {
             "release_date": 2015,
@@ -30,7 +30,7 @@
         }
     },
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 3,
         "fields": {
             "release_date": 2022,
@@ -45,7 +45,7 @@
         }
     },
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 4,
         "fields": {
             "release_date": 2019,
@@ -60,7 +60,7 @@
         }
     },
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 5,
         "fields": {
             "release_date": 2022,
@@ -75,7 +75,7 @@
         }
     },
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 6,
         "fields": {
             "release_date": 2020,
@@ -90,7 +90,7 @@
         }
     },
     {
-        "model": "waverapi.specification",
+        "model": "waverapi.specifications",
         "pk": 7,
         "fields": {
             "release_date": 2017,

@@ -1,6 +1,6 @@
 from django.db import models
 
-class Specification(models.Model):
+class Specifications(models.Model):
 
     release_date = models.IntegerField()
     manufacturer = models.ForeignKey("Manufacturer", on_delete=models.CASCADE)
